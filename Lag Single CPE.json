@@ -1,0 +1,150 @@
+test
+11
+{
+  "input": {
+    "tenant_name": "zeah1",
+    "deployment_scenario": "managed_wan_v2",
+    "site": [
+      {
+        "site_name": "zee1",
+        "site_basic_properties": {
+          "site_name": "zee1",
+          "device_host_name": "zeah1.zee1",
+          "site_group": [],
+          "site_role": "SPOKE",
+          "site_address": {
+            "street": "",
+            "city": "",
+            "state": "",
+            "zip_code": "",
+            "country": "US"
+          },
+          "site_contact": {
+            "contact_name": "",
+            "email_address": "",
+            "phone_number": ""
+          },
+          "cloud_service": "EDGE",
+          "site_type": "on_premise",
+          "topology": "mesh",
+          "sla_mgmt": "FINE",
+          "network_seg": true,
+          "on_premise_gateway": true,
+          "device_template": [
+            {
+              "template_name": "NetCracker/SDX_SRX_4600_E_SS",
+              "platform_template": "SRX_PLATFORM",
+              "device_name": "zee1",
+              "device_discovery_type": "NEW",
+              "wan_link_info": [
+                {
+                  "wan_link": "WAN_0",
+                  "wan_link_type": "Internet",
+                  "cost_currency": "USD",
+                  "local_breakout_enabled": true,
+                  "provider": "ISP1",
+                  "cost": 800,
+                  "default_link": false,
+                  "backup_link": false,
+                  "preferred_breakout_link": true,
+                  "subscribed_bandwidth": 1000,
+                  "enable_pppoe": false,
+                  "exclusive_for_local_breakout": false
+                }
+              ]
+            }
+          ],
+          "dvpn_params": {
+            "create_dvpn_threshold": "5",
+            "delete_dvpn_threshold": "2"
+          },
+          "traffic_log_type": "session",
+          "site_deployment_capabilities": [
+            "SDWAN"
+          ]
+        },
+        "properties": {
+          "property": [
+            {
+              "name": "site_advanced_config",
+              "value": {
+                "nameserver": [
+                  "8.8.8.8",
+                  "8.8.4.4"
+                ],
+                "ntpserver": "216.239.35.4",
+                "timezone": "America/Los_Angeles"
+              }
+            }
+          ]
+        },
+        "on_premise_site_info": {
+          "site_role": "spoke",
+          "ha_info": {
+            "ha_topology": "STANDALONE"
+          },
+          "service_level": "ADVANCED",
+          "device": [
+            {
+              "device_name": "zee1",
+              "device_template": "NetCracker/SDX_SRX_4600_E_SS",
+              "device_details": {
+                "device_family": "juniper-srx",
+                "device_model": "vSRX",
+                "serial_number": "JN12721E4JCA",
+                "root_password": "$1$X.14$7ihygZoTiaSc8XrY/dRfL1",
+                "ztp": true,
+                "auto_activate": true,
+                "management_connectivity": {
+                  "address_family": [
+                    "IPV4"
+                  ]
+                },
+                "boot_image": ""
+              },
+              "device_host_name": "zeah1.zee1",
+              "oam_traffic": {},
+              "traffic_log_type": "session",
+              "dvpn_params": {
+                "create_dvpn_threshold": 5,
+                "delete_dvpn_threshold": 2
+              },
+              "wan_link": [
+                {
+                  "wan_link_name": "WAN_0",
+                  "local_interface": "xe-1/1/0",
+                  "wan_link_type": "Internet",
+                  "enable_ipv4": true,
+                  "address_assignment": "STATIC",
+                  "static_ip_assignment": {
+                    "ip_address": "84.1.106.162/30",
+                    "gateway_ip": "84.1.106.161"
+                  },
+                  "tunnel_underlay_family": "IPV4",
+                  "local_breakout_enabled": true,
+                  "nat_info": {
+                    "nat_enabled": true,
+                    "source_nat_interface_based": true
+                  },
+                  "preferred_breakout_link": true,
+                  "bgp_info": false,
+                  "used_for_meshing": true,
+                  "mesh_overlay_link_type": "GRE_IPSEC",
+                  "mesh_tag": [
+                    "INTERNET"
+                  ],
+                  "used_for_oam": true,
+                  "traffic_type": "DATA_ONLY",
+                  "backup_link": false,
+                  "default_link": false
+                }
+              ],
+              "device_role": "SDWAN"
+            }
+          ],
+          "region": "regional"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+set version 20.4R3-S2.6
+set system root-authentication encrypted-password "$6$xlX3t7G8$WRp7BnATRNv/kB5KZBn1K9xjYLZ4cZHkcGAJLQB4U0xGuYInHFE7cXVTzke1Nz4uDlOGWYsPPvZGUvG9F/Kz9."
+set system login user lgyula full-name "Lazar Gyula"
+set system login user lgyula uid 2001
+set system login user lgyula class super-user
+set system login user lgyula authentication encrypted-password "$6$PFn7F89H$lF9woqpFzwNMrPPuua.9GLR9TI2uLW8YdPdY3ylmtVw8GPJgjdK9mPWisZv006evNqIci/rKC5mDzr6fsOpm91"
+set system login user razvan full-name "Razvan Bogdan"
+set system login user razvan uid 2003
+set system login user razvan class super-user
+set system login user razvan authentication encrypted-password "$1$PKcqzUfp$rpxXnE6l0ID.1dqvhwH/G."
+set system login user sdx_user uid 2004
+set system login user sdx_user class super-user
+set system login user sdx_user authentication encrypted-password "$6$2B20fT1I$vDYZ4dmt0T4RCC2l3gNfawerJ0EgVw.9XykuaGfl3YzQR2utyWS3dEXECjSN6N1EVxGIqO9z39yVW4Lht5ZEw/"
+set system login user szrobi full-name "Szilagyi Robert"
+set system login user szrobi uid 2000
+set system login user szrobi class super-user
+set system login user szrobi authentication encrypted-password "$6$H5jR/Cnx$jzk/yEuXQ5nBp4ebNyhTV.746OML3WyPdpUO0FIQ/0.WhFWKGfptDX/KXQReSIHxicdTsU8X16HDdjI8ka9FU1"
+set system services ssh
+set system services netconf ssh
+set system services web-management http interface fxp0.0
+set system name-server 8.8.8.8
+set system syslog user * any emergency
+set system syslog file messages any any
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set system phone-home server https://redirect.juniper.net
+set security log mode stream
+set security log report
+set security forwarding-options family mpls mode flow-based
+set security screen ids-option untrust-screen icmp ping-death
+set security screen ids-option untrust-screen ip source-route-option
+set security screen ids-option untrust-screen ip tear-drop
+set security screen ids-option untrust-screen tcp syn-flood alarm-threshold 1024
+set security screen ids-option untrust-screen tcp syn-flood attack-threshold 200
+set security screen ids-option untrust-screen tcp syn-flood source-threshold 1024
+set security screen ids-option untrust-screen tcp syn-flood destination-threshold 2048
+set security screen ids-option untrust-screen tcp syn-flood queue-size 2000
+set security screen ids-option untrust-screen tcp syn-flood timeout 20
+set security screen ids-option untrust-screen tcp land
+set security policies from-zone trust to-zone trust policy default-permit match source-address any
+set security policies from-zone trust to-zone trust policy default-permit match destination-address any
+set security policies from-zone trust to-zone trust policy default-permit match application any
+set security policies from-zone trust to-zone trust policy default-permit then permit
+set security policies from-zone trust to-zone untrust policy default-permit match source-address any
+set security policies from-zone trust to-zone untrust policy default-permit match destination-address any
+set security policies from-zone trust to-zone untrust policy default-permit match application any
+set security policies from-zone trust to-zone untrust policy default-permit then permit
+set security zones security-zone trust tcp-rst
+set security zones security-zone untrust screen untrust-screen
+set security zones security-zone untrust host-inbound-traffic system-services netconf
+set security zones security-zone untrust interfaces xe-1/1/0.0 host-inbound-traffic system-services ssh
+set security zones security-zone untrust interfaces xe-1/1/0.0 host-inbound-traffic system-services http
+set security zones security-zone untrust interfaces xe-1/1/0.0 host-inbound-traffic system-services https
+set interfaces xe-1/1/0 unit 0 family inet address 84.1.106.162/30
+set interfaces xe-1/1/1 unit 0 family inet address 10.96.0.198/30
+set interfaces fxp0 unit 0
+set routing-options static route 0.0.0.0/0 next-hop 84.1.106.161
+#test need to delete 
+#slkjdA
